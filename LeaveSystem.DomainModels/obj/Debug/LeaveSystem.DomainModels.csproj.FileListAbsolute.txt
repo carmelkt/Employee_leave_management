@@ -12,3 +12,4 @@ C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\Le
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.pdb
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.Migrations.firsttest.resources
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.csproj.GenerateResource.cache
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.Migrations.addedImageUrl.resources

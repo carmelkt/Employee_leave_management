@@ -20,5 +20,6 @@ namespace LeaveSystem.DomainModels
         public string Name { get; set; }
         public string Mobile { get; set; }
         public bool IsManager { get; set; }
+        public string ImageUrl { get; set; }
     }
 }
