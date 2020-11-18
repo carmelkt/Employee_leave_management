@@ -1,0 +1,14 @@
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\bin\Debug\LeaveSystem.DomainModels.dll.config
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\bin\Debug\LeaveSystem.DomainModels.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\bin\Debug\LeaveSystem.DomainModels.pdb
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\bin\Debug\EntityFramework.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\bin\Debug\EntityFramework.xml
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.csprojAssemblyReference.cache
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.csproj.CoreCompileInputs.cache
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.csproj.CopyComplete
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.pdb
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.Migrations.firsttest.resources
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.csproj.GenerateResource.cache

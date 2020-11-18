@@ -1,0 +1,15 @@
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\LeaveSystem.Repositories.dll.config
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\LeaveSystem.Repositories.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\LeaveSystem.Repositories.pdb
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\EntityFramework.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\LeaveSystem.DomainModels.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\LeaveSystem.DomainModels.pdb
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\LeaveSystem.DomainModels.dll.config
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\EntityFramework.xml
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\obj\Debug\LeaveSystem.Repositories.csprojAssemblyReference.cache
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\obj\Debug\LeaveSystem.Repositories.csproj.CoreCompileInputs.cache
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\obj\Debug\LeaveSystem.Repositories.csproj.CopyComplete
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\obj\Debug\LeaveSystem.Repositories.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\obj\Debug\LeaveSystem.Repositories.pdb

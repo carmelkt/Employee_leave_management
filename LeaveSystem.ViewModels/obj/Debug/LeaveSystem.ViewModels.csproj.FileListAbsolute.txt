@@ -1,0 +1,12 @@
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\LeaveSystem.ViewModels.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\LeaveSystem.ViewModels.pdb
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\obj\Debug\LeaveSystem.ViewModels.csprojAssemblyReference.cache
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\obj\Debug\LeaveSystem.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\obj\Debug\LeaveSystem.ViewModels.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\obj\Debug\LeaveSystem.ViewModels.pdb
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\LeaveSystem.ViewModels.dll.config
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\EntityFramework.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\EntityFramework.xml
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\obj\Debug\LeaveSystem.ViewModels.csproj.CopyComplete
