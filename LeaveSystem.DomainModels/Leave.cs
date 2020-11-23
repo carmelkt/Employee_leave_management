@@ -18,13 +18,12 @@ namespace LeaveSystem.DomainModels
         public int LeaveStatus { get; set; }
 
         public int EmployeeID { get; set; }
-        public int DepartmentID { get; set; }
-        public int LeavesCount { get; set; }
+       
+        public string RequestText { get; set; }
 
         [ForeignKey("EmployeeID")]
         public virtual Employee Employee { get; set; }
 
-        [ForeignKey("DepartmentID")]
-        public virtual Department Department { get; set; }
+        
     }
 }

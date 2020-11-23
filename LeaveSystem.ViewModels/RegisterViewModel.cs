@@ -15,10 +15,10 @@ namespace LeaveSystem.ViewModels
         public string Email { get; set; }
 
         [Required]
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
 
         [Required]
-        [Compare("Password")]
+        [Compare("PasswordHash")]
         public string ConfirmPassword { get; set; }
 
         [Required]
@@ -27,5 +27,10 @@ namespace LeaveSystem.ViewModels
 
         [Required]
         public string Mobile { get; set; }
+        public string RoleID { get; set; }
+        public string DepartmentID { get; set; }
+        public string ImageUrl { get; set; }
+        public virtual DepartmentViewModel Department { get; set; }
+        public virtual RoleViewModel Role { get; set; }
     }
 }

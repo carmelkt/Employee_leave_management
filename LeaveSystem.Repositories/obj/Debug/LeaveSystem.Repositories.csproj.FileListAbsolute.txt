@@ -13,3 +13,8 @@ C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\obj\Debug\Le
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\obj\Debug\LeaveSystem.Repositories.csproj.CopyComplete
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\obj\Debug\LeaveSystem.Repositories.dll
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\obj\Debug\LeaveSystem.Repositories.pdb
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\AutoMapper.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\System.ValueTuple.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\AutoMapper.pdb
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\AutoMapper.xml
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.Repositories\bin\Debug\System.ValueTuple.xml

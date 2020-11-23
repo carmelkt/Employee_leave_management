@@ -11,6 +11,7 @@ namespace LeaveSystem.Repositories
     {
         void CreateEmployee(Employee u);
         List<Employee> GetEmployees();
+        List<Employee> GetEmployeesByEmail(string Email);
         List<Employee> GetEmployeesByEmailAndPassword(string Email, string Password);
         List<Employee> GetEmployeesByEmployeeID(int EmployeeID);
         int GetLatestEmployeeID();
@@ -31,6 +32,11 @@ namespace LeaveSystem.Repositories
         public List<Employee> GetEmployees()
         {
             List<Employee> us = db.Employees.Where(temp => temp.IsManager == false).OrderBy(temp => temp.EmployeeName).ToList();
+            return us;
+        }
+        public List<Employee> GetEmployeesByEmail(string Email)
+        {
+            List<Employee> us = db.Employees.Where(temp => temp.Email == Email).ToList();
             return us;
         }
         public List<Employee> GetEmployeesByEmailAndPassword(string Email, string Password)

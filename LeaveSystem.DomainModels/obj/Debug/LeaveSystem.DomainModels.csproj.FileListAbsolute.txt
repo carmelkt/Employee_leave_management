@@ -15,3 +15,11 @@ C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\Le
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.Migrations.addedImageUrl.resources
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.Migrations.addRoleTable.resources
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.Migrations.addRoleTable2.resources
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\bin\Debug\AutoMapper.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\bin\Debug\System.ValueTuple.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\bin\Debug\AutoMapper.pdb
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\bin\Debug\AutoMapper.xml
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\bin\Debug\System.ValueTuple.xml
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.Migrations.addedkeysfinal.resources
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.Migrations.updatedcolumnname.resources
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.Migrations.addedreqtextfield.resources

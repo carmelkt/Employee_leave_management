@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\LeaveSystem\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\LeaveSystem\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -43,6 +46,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\LeaveSystem\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,6 +77,18 @@
     <Compile Include="Migrations\202011190604417_addRoleTable2.cs" />
     <Compile Include="Migrations\202011190604417_addRoleTable2.designer.cs">
       <DependentUpon>202011190604417_addRoleTable2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011200536384_addedkeysfinal.cs" />
+    <Compile Include="Migrations\202011200536384_addedkeysfinal.designer.cs">
+      <DependentUpon>202011200536384_addedkeysfinal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011221630350_updatedcolumnname.cs" />
+    <Compile Include="Migrations\202011221630350_updatedcolumnname.designer.cs">
+      <DependentUpon>202011221630350_updatedcolumnname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011231518029_addedreqtextfield.cs" />
+    <Compile Include="Migrations\202011231518029_addedreqtextfield.designer.cs">
+      <DependentUpon>202011231518029_addedreqtextfield.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,6 +135,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011190604417_addRoleTable2.resx">
       <DependentUpon>202011190604417_addRoleTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011200536384_addedkeysfinal.resx">
+      <DependentUpon>202011200536384_addedkeysfinal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011221630350_updatedcolumnname.resx">
+      <DependentUpon>202011221630350_updatedcolumnname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011231518029_addedreqtextfield.resx">
+      <DependentUpon>202011231518029_addedreqtextfield.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

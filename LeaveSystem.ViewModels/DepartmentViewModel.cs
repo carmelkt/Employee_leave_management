@@ -10,10 +10,11 @@ namespace LeaveSystem.ViewModels
 {
     public class DepartmentViewModel
     {
-        [Required]
+       
         public int DepartmentID { get; set;}
-        [Required]
+        
         public string DepartmentName { get; set; }
+
 
     }
 }
