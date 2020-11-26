@@ -31,7 +31,7 @@ namespace LeaveSystem.Repositories
         }
         public List<Employee> GetEmployees()
         {
-            List<Employee> us = db.Employees.Where(temp => temp.IsManager == false).OrderBy(temp => temp.EmployeeName).ToList();
+            List<Employee> us = db.Employees.OrderBy(temp => temp.EmployeeName).ToList();
             return us;
         }
         public List<Employee> GetEmployeesByEmail(string Email)

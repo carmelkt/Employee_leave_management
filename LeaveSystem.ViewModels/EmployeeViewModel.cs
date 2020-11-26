@@ -15,7 +15,7 @@ namespace LeaveSystem.ViewModels
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public string Mobile { get; set; }
-        public bool IsManager { get; set; }
+        public bool IsSpecialPermission { get; set; }
         public string ImageUrl { get; set; }
         public virtual DepartmentViewModel department { get; set; }
         public virtual RoleViewModel role { get; set; }

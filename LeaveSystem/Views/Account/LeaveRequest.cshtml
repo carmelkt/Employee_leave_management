@@ -1,5 +1,4 @@
-﻿
-@model LeaveSystem.ViewModels.LeaveViewModel
+﻿@model List<LeaveSystem.ViewModels.LeaveViewModel>
 
 
 @{
@@ -9,23 +8,67 @@
 <div class="row">
     <div class="col-sm-12">
         <h1>Leave Request</h1>
-        <form novalidate="novalidate" action="/account/LeaveRequest" method="post" class="needs-validation">
 
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Requested Leaves</h4>
+                
+                <table class="table table-bordered table-responsive table-hover">
+
+                    <tr>
+                       
+                        <td style="font-weight:bold">Leave Start Date</td>
+                        <td style="font-weight:bold">Leave End Date</td>
+                        <td style="font-weight:bold">Leave Status</td>
+                        <td style="font-weight:bold">Request Text</td>
+                       
+                    </tr>
+                    @foreach (var item in ViewBag.Leaves)
+                    {
+
+
+                        <tr>
+                           
+                            <td> @item.LeaveStartDate</td>
+                            <td>@item.LeaveEndDate</td>
+                            @if (item.LeaveStatus == 0)
+                            {
+                                <td style="color:darkblue">Pending</td>
+                            }
+                            else if (item.LeaveStatus == 1)
+                            {
+                                <td style="color:darkgreen">Approved</td>
+                            }
+                            else
+                            {
+                                <td style="color:red">Rejected</td>
+                            }
+                            <td>@item.RequestText</td>
+                        </tr>
+
+                    }
+
+                </table>
+</div>
+        </div>
+
+        <form novalidate="novalidate" action="/account/LeaveRequest" method="post" class="needs-validation">
+            <h4>Request Leave</h4>
             <div class="form-row">
-                <div class="form-group col-sm-6">
-                    <label for="txtName">EmployeeID</label>
-                    <input type="text" class="form-control" id="txtName" placeholder="Enter EmployeeID" name="EmployeeID" />
-                </div>
+                @*<div class="form-group col-sm-6">
+                <label for="txtName">EmployeeID</label>
+                <input type="text" class="form-control" id="txtName" placeholder="Enter EmployeeID" name="EmployeeID" />
+            </div>*@
             </div>
             <div class="form-row">
                 <div class="form-group col-sm-6">
                     <label for="txtName">Leave Start Date</label>
-                    <input type="datetime" class="form-control" id="txtName" placeholder="Enter Leave Start Date" name="LeaveStartDate" />
+                    <input type="date" class="form-control" id="txtName" placeholder="Enter Leave Start Date" name="LeaveStartDate" />
                 </div>
 
                 <div class="form-group col-sm-6">
                     <label for="txtName">Leave End Date</label>
-                    <input type="datetime" class="form-control" id="txtName" placeholder="Enter Leave End Date" name="LeaveEndDate" />
+                    <input type="date" class="form-control" id="txtName" placeholder="Enter Leave End Date" name="LeaveEndDate" />
                 </div>
             </div>
             <div class="form-row">
@@ -57,7 +100,7 @@
 
 
             <div class="form-row">
-                
+
 
                 <div class="form-group col-sm-6">
 
@@ -81,44 +124,6 @@
 
     $("a[href='/account/LeaveRequest']").attr("id", "active");
 
-    $(document).on("submit", ".needs-validation", validate);
-    $(".needs-validation input").blur(validate);
-    function validate(event)
-    {
-        if ($(".needs-validation")[0].checkValidity() == false || $(".email-exist").text() != "")
-        {
-            event.preventDefault();
-        }
-        $(".needs-validation")[0].classList.add("was-validated");
-    }
-
-    function escapeRegExp(str) @*mentioned in confirm password*@
-    {
-        return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
-    }
-
-    $("#txtEmail").blur(function ()
-    {
-        $.ajax({
-            url: "/api/account?email=" + $("#txtEmail").val(), type: "GET", success:
-                function (response)
-                {
-                    if (response == "Not Found")
-                    {
-                        $(".email-exist").text("");
-                        $(".email-exist").parent(".form-group").find(".valid-feedback").css("color", "#28a745");
-                    }
-                    else
-                    {
-                        $(".email-exist").text("Email already registered");
-                        $(".email-exist").parent(".form-group").find(".valid-feedback").css("color", "white");
-                    }
-                },
-            error: function ()
-            {
-                $(".email-exist").text("Error");
-            }
-        });
-      });
+   
 </script>
 

@@ -1,4 +1,5 @@
 ﻿using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,7 @@ using LeaveSystem.ViewModels;
 using LeaveSystem.ServiceLayer;
 using LeaveSystem.DomainModels;
 using System.Security.Cryptography;
+using LeaveSystem.CustomFilters;
 
 namespace LeaveSystem.Controllers
 {
@@ -25,6 +27,7 @@ namespace LeaveSystem.Controllers
             this.rs = rs;
             this.ls = ls;
         }
+        [HRManagerAuthorizationFilter]
         public ActionResult Register()
         {
             ViewBag.Departments = ds.GetDepartments();
@@ -36,8 +39,19 @@ namespace LeaveSystem.Controllers
         [HttpPost]
         public ActionResult Register(RegisterViewModel rvm)
         {
+            
             LeaveSystemDatabaseDbContext db = new LeaveSystemDatabaseDbContext();
-
+            /*if (Image != null)
+            {
+                string ImageName = System.IO.Path.GetFileName(Image.FileName);
+                string PhysicalPath = Server.MapPath("~/Images/" + ImageName);
+                Image.SaveAs(PhysicalPath);
+                rvm.ImageUrl = PhysicalPath;
+            }*/
+            string ImageName = rvm.ImageUrl;
+            string PhysicalPath = Server.MapPath("~/Images/" + ImageName);
+            rvm.ImageUrl = PhysicalPath;
+         
             //if (Request.Files.Count >= 1)
             if (Request.Files.Count >= 1)
             {
@@ -130,9 +144,18 @@ namespace LeaveSystem.Controllers
                     Session["CurrentUserName"] = uvm.EmployeeName;
                     Session["CurrentUserEmail"] = uvm.Email;
                     Session["CurrentUserPassword"] = uvm.PasswordHash;
-                    Session["CurrentUserIsAdmin"] = uvm.IsManager;
+                    Session["CurrentUserIsAdmin"] = uvm.IsSpecialPermission;
                     Session["CurrentUserRoleName"] = uvm.role.RoleName;
-                    if (uvm.IsManager)
+                   /* if (uvm.role.RoleName == "Project Manager")
+                    {
+                        ViewBag.Disp1 = 1;
+                    }
+                    else
+                    {
+                        ViewBag.Disp1 = "hidden";
+                    }*/
+
+                    if (uvm.IsSpecialPermission)
                     {
                         return RedirectToRoute(new { controller = "Home", action = "Index" });
                     }
@@ -140,6 +163,7 @@ namespace LeaveSystem.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
+
                 }
                 else
                 {
@@ -152,28 +176,65 @@ namespace LeaveSystem.Controllers
                 ModelState.AddModelError("x", "Invalid Data");
                 return View(lvm);
             }
+
         }
         public ActionResult Logout()
         {
             Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
-
+        [EmployeeAuthorizationFilter]
         public ActionResult LeaveRequest()
         {
+            List<LeaveViewModel> qt = ls.GetLeaves().Where(temp => temp.EmployeeID == Convert.ToInt32(Session["CurrentUserID"])).ToList();
+            
+            ViewBag.Leaves = qt;
             LeaveViewModel lvm = new LeaveViewModel();
-            return View(lvm);
+            return View(qt);
         }
 
         [HttpPost]
         public ActionResult LeaveRequest(LeaveViewModel lvm)
         {
-            //lvm.EmployeeID= Convert.ToInt32(Session["CurrentUserID"]);
+            lvm.EmployeeID= Convert.ToInt32(Session["CurrentUserID"]);
             //EmployeeViewModel evm = this.us.GetEmployeesByEmployeeID(lvm.EmployeeID);
             this.ls.LeaveRequest(lvm);
 
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("LeaveRequest", "Account");
+        }
+
+        [ProjectManagerAuthorizationFilter]
+        public ActionResult UpdateLeave()
+        {
+           
+            List<LeaveViewModel> AllLeaves = ls.GetLeaves();
+            ViewBag.AllLeaves = AllLeaves;
+            return View(AllLeaves);
+        }
+        [HttpPost]
+        public ActionResult UpdateLeave(LeaveStatusViewModel lsvm)
+        {
+           // lsvm.LeaveID = Convert.ToInt32(Request["LeaveID"]); 
+            this.ls.UpdateLeaveStatus(lsvm.LeaveID, lsvm.LeaveStatus);
+            return RedirectToAction("UpdateLeave", "Account");
+        }
+        public ActionResult EmployeeSearch(string search="")
+        {
+            ViewBag.search = search;
+
+            List<EmployeeViewModel> Employe = this.us.GetEmployees().Where(temp => temp.EmployeeName != null && temp.EmployeeName.ToLower().Contains(search.ToLower())).ToList();
+            ViewBag.Employe = Employe;
+            
+            return View(Employe);
+        }
+        public ActionResult EmployeeSearchByRoles(int RoleID=0)
+        {
+            List<EmployeeViewModel> SearchRoles = this.us.GetEmployees().Where(temp => temp.role.RoleID == RoleID).ToList();
+            ViewBag.Roles = rs.GetRoles();
+            ViewBag.SearchRoles = SearchRoles;
+            return View(SearchRoles);
+
         }
     }
 }

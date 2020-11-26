@@ -90,6 +90,10 @@
     <Compile Include="Migrations\202011231518029_addedreqtextfield.designer.cs">
       <DependentUpon>202011231518029_addedreqtextfield.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011260834420_addedspecialpermissioncolumn.cs" />
+    <Compile Include="Migrations\202011260834420_addedspecialpermissioncolumn.designer.cs">
+      <DependentUpon>202011260834420_addedspecialpermissioncolumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
@@ -144,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011231518029_addedreqtextfield.resx">
       <DependentUpon>202011231518029_addedreqtextfield.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011260834420_addedspecialpermissioncolumn.resx">
+      <DependentUpon>202011260834420_addedspecialpermissioncolumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

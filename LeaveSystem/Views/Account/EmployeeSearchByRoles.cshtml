@@ -1,0 +1,45 @@
+﻿@model List<LeaveSystem.ViewModels.EmployeeViewModel>
+@{
+    ViewBag.Title = "Search Employee by Roles";
+}
+
+<nav>
+    <a class="nav-link" href="/account/EmployeeSearchByRoles">Search by Roles</a>
+    <a class="nav-link" href="/account/EmployeeSearch">Search by Employee Name</a>
+</nav>
+<h2>Employees</h2>
+<form class="form-inline" action="/account/EmployeeSearchByRoles">
+    <div class="form-group col-md-3">
+        <label for="RoleID" style="font-size:larger">Role: &nbsp;</label>
+        <select class="form-control" id="RoleID" name="RoleID" >
+            <option value="">Select Role</option>
+            @foreach (var dep in ViewBag.Roles)
+            {
+                <option value="@dep.RoleID">@dep.RoleName</option>
+            }
+        </select>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+    
+</form>
+
+
+<table class="table">
+    <tr>
+        <th>Employee Name</th>
+        <th>Employee ID</th>
+        <th>Employee e-mail</th>
+        <th>Role</th>
+    </tr>
+    @foreach (var item in ViewBag.SearchRoles)
+    {
+        <tr>
+
+            <td>@item.EmployeeName</td>
+            <td>@item.EmployeeID</td>
+            <td>@item.Email</td>
+            <td>@item.role.RoleName</td>
+        </tr>
+    }
+</table>
+

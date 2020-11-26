@@ -15,6 +15,7 @@ namespace LeaveSystem.ViewModels
         public int LeaveStartDate { get; set; }
         public int LeaveEndDate { get; set; }
         public int EmployeeID { get; set; }
+        public String RequestText { get; set; }
         public virtual EmployeeViewModel Employee { get; set; }
 
     }

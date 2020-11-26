@@ -23,3 +23,4 @@ C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\bin\Debug\Sy
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.Migrations.addedkeysfinal.resources
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.Migrations.updatedcolumnname.resources
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.Migrations.addedreqtextfield.resources
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.DomainModels\obj\Debug\LeaveSystem.DomainModels.Migrations.addedspecialpermissioncolumn.resources

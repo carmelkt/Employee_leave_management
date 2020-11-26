@@ -23,8 +23,8 @@ namespace LeaveSystem.Controllers
         }
         public ActionResult Index()
         {
-            List<LeaveViewModel> Leaves = this.qs.GetLeaves().ToList();
-            return View(Leaves);
+            //List<LeaveViewModel> Leaves = this.qs.GetLeaves().ToList();
+            return View();
         }
         public ActionResult About()
         {
@@ -45,6 +45,11 @@ namespace LeaveSystem.Controllers
         {
             List<RoleViewModel> roles = this.rs.GetRoles();
             return View(roles);
+        }
+        public ActionResult InvalidAccess()
+        {
+            ViewBag.message = "Invalid Access Request";
+            return View();
         }
     }
 }

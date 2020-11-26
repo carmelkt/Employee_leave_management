@@ -28,7 +28,7 @@ namespace LeaveSystem.ViewModels
         [Required]
         public string Mobile { get; set; }
         public string RoleID { get; set; }
-        public string DepartmentID { get; set; }
+        public string DepartmentID { get;set; }
         public string ImageUrl { get; set; }
         public virtual DepartmentViewModel Department { get; set; }
         public virtual RoleViewModel Role { get; set; }

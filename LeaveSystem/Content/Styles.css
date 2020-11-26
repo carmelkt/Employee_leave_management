@@ -1,9 +1,19 @@
 ﻿.navbar {
-    background-color: #494e0a;
+    background-color: #0e144a;
+    font-size:large;
+    
+   }
+.navbar-brand {
+font-size:larger;
+font-weight:bolder;
+}
+.nav-item{
+   margin-left:20px;
 }
 
 #active {
     color: red !important;
+    background-color:#303d64;
 }
 
 .navbar a:link, .navbar a:visited {
@@ -11,8 +21,8 @@
 }
 
 .navbar a:hover {
-    color: #0dedd1 !important;
-    text-decoration: underline;
+    color: #afb8e5 !important;
+    background-color:#3e3577;
 }
 
 .dropdown-menu a:hover {
