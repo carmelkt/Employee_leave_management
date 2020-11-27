@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Update Employee Details";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Update Employee </h3>
+        <form novalidate="novalidate" action="/account/UpdateEmployee" method="post" class="needs-validation">
+            @Html.AntiForgeryToken()
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    <label for="txtName"></label>
+                    <input type="text" class="form-control hidden" value="@ViewBag.empid"  id="txtName" placeholder="Enter Employee ID" name="EmployeeID" required="required"  autofocus="autofocus" />
+                    
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="txtName">New Employee Name</label>
+                    <input type="text" class="form-control" id="txtName" placeholder="Enter name" name="EmployeeName" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" />
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter name [alphabets only].
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="txtMobile">Mobile</label>
+                    <input type="text" class="form-control" id="txtMobile" placeholder="Mobile" name="Mobile" required="required" pattern="^[789]\d{9}$" />
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Invalid mobile Number.
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Employee</button>
+        </form>
+    </div>
+</div>
+
+

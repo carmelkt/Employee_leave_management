@@ -198,6 +198,7 @@
     <Compile Include="CustomFilters\EmployeeAuthorizationFilterAttribute.cs" />
     <Compile Include="CustomFilters\HRManagerAuthorizationFilterAttribute.cs" />
     <Compile Include="CustomFilters\ProjectManagerAuthorizationFilterAttribute.cs" />
+    <Compile Include="CustomFilters\SpecialHRAuthorizationFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -232,6 +233,7 @@
     <Content Include="Views\Home\InvalidAccess.cshtml" />
     <Content Include="Views\Account\EmployeeSearch.cshtml" />
     <Content Include="Views\Account\EmployeeSearchByRoles.cshtml" />
+    <Content Include="Views\Account\UpdateEmployee.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -240,8 +242,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
+    <Folder Include="App_Data\Image\" />
+    <Folder Include="EmployeePhoto\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

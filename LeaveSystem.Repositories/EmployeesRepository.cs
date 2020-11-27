@@ -10,6 +10,7 @@ namespace LeaveSystem.Repositories
     public interface IEmployeesRepository
     {
         void CreateEmployee(Employee u);
+        void UpdateEmployee(int eid, string EmployeeName, string Mobile);
         List<Employee> GetEmployees();
         List<Employee> GetEmployeesByEmail(string Email);
         List<Employee> GetEmployeesByEmailAndPassword(string Email, string Password);
@@ -28,6 +29,16 @@ namespace LeaveSystem.Repositories
         {
             db.Employees.Add(u);
             db.SaveChanges();
+        }
+        public void UpdateEmployee(int eid, string EmployeeName, string Mobile)
+        {
+            Employee us = db.Employees.Where(temp => temp.EmployeeID == eid).FirstOrDefault();
+            if(us!=null)
+            {
+                us.EmployeeName = EmployeeName;
+                us.Mobile = Mobile;
+                db.SaveChanges();
+            }
         }
         public List<Employee> GetEmployees()
         {

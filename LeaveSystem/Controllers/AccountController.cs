@@ -30,6 +30,13 @@ namespace LeaveSystem.Controllers
         [HRManagerAuthorizationFilter]
         public ActionResult Register()
         {
+            /*if(ImageUrl!=null)
+            {
+                string ImageName = System.IO.Path.GetFileName(ImageUrl.FileName);
+                string PhysicalPath = Server.MapPath("~/App_Data/Image/" + ImageName);
+                ImageUrl.SaveAs(PhysicalPath);
+            }*/
+
             ViewBag.Departments = ds.GetDepartments();
             ViewBag.Roles = rs.GetRoles();
             return View();
@@ -48,43 +55,29 @@ namespace LeaveSystem.Controllers
                 Image.SaveAs(PhysicalPath);
                 rvm.ImageUrl = PhysicalPath;
             }*/
-            string ImageName = rvm.ImageUrl;
-            string PhysicalPath = Server.MapPath("~/Images/" + ImageName);
-            rvm.ImageUrl = PhysicalPath;
-         
-            //if (Request.Files.Count >= 1)
-            if (Request.Files.Count >= 1)
+            //string ImageName = rvm.ImageUrl;
+            //string PhysicalPath = Server.MapPath("~/App_Data/Image" + ImageName);
+            //rvm.ImageUrl = PhysicalPath;
+            
+                HttpPostedFileBase hpf = Request.Files["Images"] as HttpPostedFileBase;
+            if (hpf != null)
             {
-                var file = Request.Files[0];
-                var imgBytes = new Byte[0];
+                string saveFileName = Path.GetFileName(hpf.FileName);
+                string location = (Server.MapPath("~/EmployeePhoto" + @"\" + saveFileName.Replace('+', '_')));
+                Request.Files["Images"].SaveAs(location);
+                
 
-                try
+
+                string locx = "EmployeePhoto/" + saveFileName;
+
                 {
-                    imgBytes = new Byte[file.ContentLength];
-                    file.InputStream.Read(imgBytes, 0, file.ContentLength);
+                    rvm.ImageUrl = locx;
                 }
-                catch (Exception)
-                {
-                    imgBytes = new Byte[file.ContentLength - 1];
-                    file.InputStream.Read(imgBytes, 0, file.ContentLength);
-                }
-                var base64String = Convert.ToBase64String(imgBytes, 0, imgBytes.Length);
-                rvm.ImageUrl = base64String;
             }
+            //if (Request.Files.Count >= 1)
+            
 
-            /*string GenerateHash(string inputData)
-            {
-                using (SHA256 sha256Hash = SHA256.Create())
-                {
-                    byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(inputData));
-                    StringBuilder builder = new StringBuilder();
-                    for (int i = 0; i < bytes.Length; i++)
-                    {
-                        builder.Append(bytes[i].ToString("x2"));
-                    }
-                    return builder.ToString();
-                }
-            }*/
+           
 
             //rvm.EmployeeName = rvm.EmployeeName;
             this.us.CreateEmployee(rvm);
@@ -94,35 +87,7 @@ namespace LeaveSystem.Controllers
             
             return RedirectToAction("Index", "Home");
 
-           // us.CreateEmployee(rvm);
-            //return RedirectToAction("Index", "Home");
-            // if (ModelState.IsValid)
-            /* {
-
-                 int uid = this.us.CreateEmployee(rvm);
-                 Session["CurrentUserID"] = uid;
-                 Session["CurrentUserName"] = rvm.EmployeeName;
-                 Session["CurrentUserEmail"] = rvm.Email;
-                 Session["CurrentUserPassword"] = rvm.Password;
-                 Session["CurrentUserIsAdmin"] = false;
-                 Session["CurrentUserDepartmentID"] = rvm.Department.DepartmentID;
-                 if (Request.Files.Count >= 1)
-                 {
-                     var file = Request.Files[0];
-                     var imgBytes = new Byte[file.ContentLength];
-                     file.InputStream.Read(imgBytes, 0, file.ContentLength);
-                     var base64String = Convert.ToBase64String(imgBytes, 0, imgBytes.Length);
-                     rvm.Photo = base64String;
-                 }
-                 Session["CurrentUserPhoto"] = rvm.Photo;
-                 return RedirectToAction("Index", "Home");
-             }
-             //else
-             {
-                // ModelState.AddModelError("x", "Invalid Information");
-                 // remove later
-                 //return View();
-             }*/
+           
         }
 
         public ActionResult Login()
@@ -146,20 +111,11 @@ namespace LeaveSystem.Controllers
                     Session["CurrentUserPassword"] = uvm.PasswordHash;
                     Session["CurrentUserIsAdmin"] = uvm.IsSpecialPermission;
                     Session["CurrentUserRoleName"] = uvm.role.RoleName;
-                   /* if (uvm.role.RoleName == "Project Manager")
-                    {
-                        ViewBag.Disp1 = 1;
-                    }
-                    else
-                    {
-                        ViewBag.Disp1 = "hidden";
-                    }*/
+                    Session["CurrentEmployee"] = null;
+                    Session["CurrentUserPhoto"] = uvm.ImageUrl;
+                   
 
-                    if (uvm.IsSpecialPermission)
-                    {
-                        return RedirectToRoute(new { controller = "Home", action = "Index" });
-                    }
-                    else
+                   
                     {
                         return RedirectToAction("Index", "Home");
                     }
@@ -236,5 +192,33 @@ namespace LeaveSystem.Controllers
             return View(SearchRoles);
 
         }
+        [HRManagerAuthorizationFilter]
+        public ActionResult UpdateEmployee(int? id)
+        {
+            //int uid = Convert.ToInt32(Session["CurrentUserID"]);
+            //EmployeeViewModel uvm=this.us.GetEmployeesByEmployeeID(uid);
+            //UpdateEmployeeViewModel uevm = new UpdateEmployeeViewModel() { EmployeeName = uvm.EmployeeName, Email = uvm.Email, Mobile = uvm.Mobile, EmployeeID=uvm.EmployeeID };
+            EmployeeViewModel emp = this.us.GetEmployees().Where(temp => temp.EmployeeID != 0 && temp.EmployeeID==id).FirstOrDefault();
+           
+            ViewBag.Departments = ds.GetDepartments();
+            ViewBag.Roles = rs.GetRoles();
+            if (id != 0)
+            {
+                ViewBag.empid = id;
+            }
+            ViewBag.emp = emp;
+            return View(emp);
+        }
+        [HttpPost]
+        public ActionResult UpdateEmployee(UpdateEmployeeViewModel uevm)
+        {
+            
+            
+            
+            
+            this.us.UpdateEmployee(uevm.EmployeeID, uevm.EmployeeName, uevm.Mobile);
+            return RedirectToAction("EmployeeSearch", "Account");
+        }
+
     }
 }

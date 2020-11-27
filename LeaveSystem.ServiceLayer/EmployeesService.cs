@@ -15,6 +15,7 @@ namespace LeaveSystem.ServiceLayer
     public interface IEmployeesService
     {
         int CreateEmployee(RegisterViewModel uvm);
+        void UpdateEmployee(int eid, string EmployeeName, string Mobile);
         List<EmployeeViewModel> GetEmployees();
         EmployeeViewModel GetEmployeesByEmail(string Email);
         EmployeeViewModel GetEmployeesByEmailAndPassword(string Email, string Password);
@@ -41,6 +42,10 @@ namespace LeaveSystem.ServiceLayer
             return uid;
         }
 
+        public void UpdateEmployee(int eid, string EmployeeName,string Mobile)
+        {
+            ur.UpdateEmployee(eid, EmployeeName,Mobile);
+        }
         public List<EmployeeViewModel> GetEmployees()
         {
             List<Employee> u = ur.GetEmployees();

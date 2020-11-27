@@ -68,6 +68,7 @@
     <Compile Include="RegisterViewModel.cs" />
     <Compile Include="RequestLeaveViewModel.cs" />
     <Compile Include="RoleViewModel.cs" />
+    <Compile Include="UpdateEmployeeViewModel.cs" />
     <Compile Include="UpdateLeaveViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

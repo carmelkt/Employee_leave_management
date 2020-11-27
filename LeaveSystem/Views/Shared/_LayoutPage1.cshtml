@@ -59,7 +59,7 @@
                         </li>
                     }
 
-                    @if (Session["CurrentUserRoleName"] != null && Session["CurrentUserRoleName"].ToString() == "Project Manager")
+                    @if ((Session["CurrentUserRoleName"] != null && Session["CurrentUserRoleName"].ToString() == "Project Manager")||(Session["CurrentUserRoleName"] != null&&Session["CurrentUserRoleName"].ToString() == "HR Manager"&& Session["CurrentUserIsAdmin"].Equals(true)))
                     {
                         <li class="nav-item">
                             <a class="nav-link" href="/account/UpdateLeave">Update-Leave</a>
@@ -78,8 +78,8 @@
                     @if (Session["CurrentUserName"] != null)
                     {
                         <li class="nav-item " >
-                            <a class="nav-link " href="/account/logout">Logout-@Session["CurrentUserName"].ToString().ToUpper()-@Session["CurrentUserID"]-@Session["CurrentUserRoleName"]</a>
-
+                            <a class="nav-link " href="/account/logout">Logout-@Session["CurrentUserName"].ToString().ToUpper()-@Session["CurrentUserID"]-@Session["CurrentUserRoleName"]-<img src="~/@Session["CurrentUserPhoto"].ToString()" width="40px" height="40px"/></a>
+                            
                         </li>
                     }
                 </ul>
