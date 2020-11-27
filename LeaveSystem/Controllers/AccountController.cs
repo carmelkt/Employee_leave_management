@@ -175,6 +175,7 @@ namespace LeaveSystem.Controllers
             this.ls.UpdateLeaveStatus(lsvm.LeaveID, lsvm.LeaveStatus);
             return RedirectToAction("UpdateLeave", "Account");
         }
+        [EmployeeAuthorizationFilter]
         public ActionResult EmployeeSearch(string search="")
         {
             ViewBag.search = search;
@@ -184,6 +185,7 @@ namespace LeaveSystem.Controllers
             
             return View(Employe);
         }
+        [EmployeeAuthorizationFilter]
         public ActionResult EmployeeSearchByRoles(int RoleID=0)
         {
             List<EmployeeViewModel> SearchRoles = this.us.GetEmployees().Where(temp => temp.role.RoleID == RoleID).ToList();
