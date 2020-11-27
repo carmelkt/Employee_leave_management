@@ -160,7 +160,7 @@ namespace LeaveSystem.Controllers
             return RedirectToAction("LeaveRequest", "Account");
         }
 
-        [ProjectManagerAuthorizationFilter]
+        [SpecialHRAuthorizationFilter]
         public ActionResult UpdateLeave()
         {
            

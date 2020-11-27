@@ -78,7 +78,7 @@
                     @if (Session["CurrentUserName"] != null)
                     {
                         <li class="nav-item " >
-                            <a class="nav-link " href="/account/logout">Logout-@Session["CurrentUserName"].ToString().ToUpper()-@Session["CurrentUserID"]-@Session["CurrentUserRoleName"]-<img src="~/@Session["CurrentUserPhoto"].ToString()" width="40px" height="40px"/></a>
+                            <a class="nav-link " href="/account/logout">Logout-@Session["CurrentUserName"].ToString().ToUpper()-@Session["CurrentUserID"]-@Session["CurrentUserRoleName"]-<img src="~/@Session["CurrentUserPhoto"].ToString()" width="30px" height="30px"/></a>
                             
                         </li>
                     }

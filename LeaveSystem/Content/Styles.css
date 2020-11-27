@@ -1,14 +1,13 @@
 ﻿.navbar {
     background-color: #0e144a;
-    font-size:large;
-    
-   }
+    font-size:medium;
+    }
 .navbar-brand {
 font-size:larger;
 font-weight:bolder;
 }
 .nav-item{
-   margin-left:20px;
+   margin-left:15px;
 }
 
 #active {
