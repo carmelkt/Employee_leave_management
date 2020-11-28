@@ -19,6 +19,7 @@ namespace LeaveSystem.ViewModels
         public string EmployeeName { get; set; }
         [Required]
         public string Mobile { get; set; }
+        public string ImageUrl { get; set; }
         public virtual DepartmentViewModel Department { get; set; }
         public virtual RoleViewModel Role { get; set; }
         public virtual EmployeeViewModel Employee { get; set; }
