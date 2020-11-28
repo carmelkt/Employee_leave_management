@@ -37,7 +37,7 @@ namespace LeaveSystem.Repositories
                 
                 qt.LeaveStartDate = q.LeaveStartDate;
                 qt.LeaveEndDate = q.LeaveEndDate;
-                qt.DepartmentID = q.DepartmentID;
+                
                 db.SaveChanges();
             }
         }

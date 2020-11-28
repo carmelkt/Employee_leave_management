@@ -16,3 +16,11 @@ C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ServiceLayer\obj\Debug\Le
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ServiceLayer\obj\Debug\LeaveSystem.ServiceLayer.dll
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ServiceLayer\obj\Debug\LeaveSystem.ServiceLayer.pdb
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ServiceLayer\bin\Debug\LeaveSystem.ViewModels.dll.config
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ServiceLayer\bin\Debug\LeaveSystem.ServiceLayer.dll.config
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ServiceLayer\bin\Debug\AutoMapper.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ServiceLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ServiceLayer\bin\Debug\System.ValueTuple.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ServiceLayer\bin\Debug\AutoMapper.pdb
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ServiceLayer\bin\Debug\AutoMapper.xml
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ServiceLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ServiceLayer\bin\Debug\System.ValueTuple.xml

@@ -1,0 +1,24 @@
+﻿@model List<LeaveSystem.ViewModels.RoleViewModel>
+
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4>Roles</h4>
+        @Html.AntiForgeryToken()
+        <ul class="list-group list-group-flush">
+            @foreach (var item in Model)
+            {
+                <li class="list-group-item list-group-item-action">@item.RoleID. @item.RoleName</li>
+            }
+        </ul>
+    </div>
+</div>
+
+<script>
+    $("a[href='/home/roles']").attr("id", "active");
+</script>
+

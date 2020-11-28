@@ -1,0 +1,40 @@
+﻿.navbar {
+    background-color: #0e144a;
+    font-size:medium;
+    }
+.navbar-brand {
+font-size:larger;
+font-weight:bolder;
+}
+.nav-item{
+   margin-left:15px;
+}
+
+#active {
+    color: red !important;
+    background-color:#303d64;
+}
+
+.navbar a:link, .navbar a:visited {
+    color: antiquewhite !important;
+}
+
+.navbar a:hover {
+    color: #afb8e5 !important;
+    background-color:#3e3577;
+}
+
+.dropdown-menu a:hover {
+    color: black !important;
+}
+
+.hidden {
+    display: none;
+}
+
+.login-box {
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 2px black;
+    margin-top: 100px;
+    padding: 40px;
+}

@@ -1,0 +1,22 @@
+﻿@model List<LeaveSystem.ViewModels.DepartmentViewModel>
+
+@{
+    ViewBag.Title = "Departments";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4>Departments</h4>
+        @Html.AntiForgeryToken()
+        <ul class="list-group list-group-flush">
+            @foreach (var item in Model)
+            {
+                <li class="list-group-item list-group-item-action">@item.DepartmentID. @item.DepartmentName</li>
+            }
+        </ul>
+    </div>
+</div>
+
+<script>
+    $("a[href='/home/departments']").attr("id", "active");
+</script>

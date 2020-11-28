@@ -10,3 +10,8 @@ C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\Enti
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\EntityFramework.xml
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\obj\Debug\LeaveSystem.ViewModels.csproj.CopyComplete
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\AutoMapper.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\System.ValueTuple.dll
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\AutoMapper.pdb
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\AutoMapper.xml
+C:\Users\user\Downloads\mvc-project-carmel\LeaveSystem.ViewModels\bin\Debug\System.ValueTuple.xml

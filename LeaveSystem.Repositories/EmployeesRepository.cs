@@ -10,7 +10,9 @@ namespace LeaveSystem.Repositories
     public interface IEmployeesRepository
     {
         void CreateEmployee(Employee u);
+        void UpdateEmployee(int eid, string EmployeeName, string Mobile);
         List<Employee> GetEmployees();
+        List<Employee> GetEmployeesByEmail(string Email);
         List<Employee> GetEmployeesByEmailAndPassword(string Email, string Password);
         List<Employee> GetEmployeesByEmployeeID(int EmployeeID);
         int GetLatestEmployeeID();
@@ -28,9 +30,24 @@ namespace LeaveSystem.Repositories
             db.Employees.Add(u);
             db.SaveChanges();
         }
+        public void UpdateEmployee(int eid, string EmployeeName, string Mobile)
+        {
+            Employee us = db.Employees.Where(temp => temp.EmployeeID == eid).FirstOrDefault();
+            if(us!=null)
+            {
+                us.EmployeeName = EmployeeName;
+                us.Mobile = Mobile;
+                db.SaveChanges();
+            }
+        }
         public List<Employee> GetEmployees()
         {
-            List<Employee> us = db.Employees.Where(temp => temp.IsManager == false).OrderBy(temp => temp.EmployeeName).ToList();
+            List<Employee> us = db.Employees.OrderBy(temp => temp.EmployeeName).ToList();
+            return us;
+        }
+        public List<Employee> GetEmployeesByEmail(string Email)
+        {
+            List<Employee> us = db.Employees.Where(temp => temp.Email == Email).ToList();
             return us;
         }
         public List<Employee> GetEmployeesByEmailAndPassword(string Email, string Password)

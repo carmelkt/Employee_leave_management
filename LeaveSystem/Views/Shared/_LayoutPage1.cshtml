@@ -1,0 +1,93 @@
+﻿@using System.Web.Optimization
+@using LeaveSystem.CustomFilters
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - YourCompany</title>
+    @Styles.Render("~/Styles/bootstrap")
+    @Styles.Render("~/Styles/site")
+    @Scripts.Render("~/Scripts/bootstrap")
+
+   
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm text-light navbar-light" >
+            <a class="navbar-brand" href="#">Leave System</a>
+
+
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavBar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavBar">
+                <ul class="navbar-nav ">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/home/index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/about">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/contact">Contact</a>
+                    </li>
+                    @if (Session["CurrentUserName"] != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home/departments">Departments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/employeesearch">Employees</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home/roles">Roles</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/LeaveRequest">Request-Leave</a>
+                        </li>
+                    }
+                    @if (Session["CurrentUserRoleName"] != null && Session["CurrentUserRoleName"].ToString() == "HR Manager")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/register">Register</a>
+                        </li>
+                    }
+
+                    @if ((Session["CurrentUserRoleName"] != null && Session["CurrentUserRoleName"].ToString() == "Project Manager")||(Session["CurrentUserRoleName"] != null&&Session["CurrentUserRoleName"].ToString() == "HR Manager"&& Session["CurrentUserIsAdmin"].Equals(true)))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/UpdateLeave">Update-Leave</a>
+                        </li>
+                    }
+
+
+                    @if (Session["CurrentUserName"] == null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/login">Login</a>
+                        </li>
+                    }
+
+
+                    @if (Session["CurrentUserName"] != null)
+                    {
+                        <li class="nav-item " >
+                            <a class="nav-link " href="/account/logout">Logout-@Session["CurrentUserName"].ToString().ToUpper()-@Session["CurrentUserID"]-@Session["CurrentUserRoleName"]-<img src="~/@Session["CurrentUserPhoto"].ToString()" width="30px" height="30px"/></a>
+                            
+                        </li>
+                    }
+                </ul>
+            </div>
+            
+        </nav>      
+            @RenderBody()
+    </div>
+    
+</body>
+</html>

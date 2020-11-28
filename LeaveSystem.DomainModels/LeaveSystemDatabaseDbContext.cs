@@ -12,6 +12,7 @@ namespace LeaveSystem.DomainModels
         public DbSet<Department> Departments { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Leave> Leaves { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
     }
 }
