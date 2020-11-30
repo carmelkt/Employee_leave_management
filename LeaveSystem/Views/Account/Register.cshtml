@@ -135,10 +135,11 @@
         }
         $(".needs-validation")[0].classList.add("was-validated");
     }
-    function escapeRegExp(str) @*mentioned in confirm password*@
+    function escapeRegExp(str) 
     {
         return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     }
+
     function checker() {
         if ($("#RoleID").val() == 1) {
             $(".chkx").show();

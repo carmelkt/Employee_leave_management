@@ -224,7 +224,7 @@ namespace LeaveSystem.Controllers
             return View(SearchRoles);
 
         }
-        //[HRManagerAuthorizationFilter]
+ 
         public ActionResult UpdateEmployee(int? id)
         { int tempx = Convert.ToInt32(Session["CurrentUserID"]);
             if (Session["CurrentUserRoleName"].ToString() == "HR Manager" || (tempx == id && id != null))
