@@ -118,9 +118,9 @@ namespace LeaveSystem.Controllers
 
                    
                     {
-                        return RedirectToAction("ProfilePage", "Account");
+                        
+                        return RedirectToAction("ProfilePage", "Account");                  
                     }
-
                 }
                 else
                 {
@@ -134,17 +134,7 @@ namespace LeaveSystem.Controllers
                 return View(lvm);
             }
 
-        }
-        [EmployeeAuthorizationFilter]
-        public ActionResult ProfilePage()
-        {
-            int eid = Convert.ToInt32(Session["CurrentUserID"]);
-            string RoleName = Session["CurrentUserRoleName"].ToString();
-            ViewBag.CurrentRole = RoleName;
-            EmployeeViewModel emp = this.us.GetEmployees().Where(temp => temp.EmployeeID == eid).FirstOrDefault();
-            ViewBag.EMP = emp;
-            return View();
-        }
+        } 
         public ActionResult Logout()
         {
             Session.Abandon();
@@ -227,39 +217,43 @@ namespace LeaveSystem.Controllers
  
         public ActionResult UpdateEmployee(int? id)
         { int tempx = Convert.ToInt32(Session["CurrentUserID"]);
-            if (Session["CurrentUserRoleName"].ToString() == "HR Manager" || (tempx == id && id != null))
-            { //int uid = Convert.ToInt32(Session["CurrentUserID"]);
-              //EmployeeViewModel uvm=this.us.GetEmployeesByEmployeeID(uid);
-              //UpdateEmployeeViewModel uevm = new UpdateEmployeeViewModel() { EmployeeName = uvm.EmployeeName, Email = uvm.Email, Mobile = uvm.Mobile, EmployeeID=uvm.EmployeeID };
-                EmployeeViewModel emp = this.us.GetEmployees().Where(temp => temp.EmployeeID != 0 && temp.EmployeeID == id).FirstOrDefault();
+            if (Session["CurrentUserRoleName"].ToString() == "HR Manager" || (tempx == id && id != null)) { 
+              EmployeeViewModel emp = this.us.GetEmployees().Where(temp => temp.EmployeeID != 0 && temp.EmployeeID == id).FirstOrDefault();
 
                 ViewBag.Departments = ds.GetDepartments();
                 ViewBag.Roles = rs.GetRoles();
                 if (id != 0)
-                {
-                    ViewBag.empid = id;
+                {ViewBag.empid = id;
                 }
                 ViewBag.emp = emp;
                 return View(emp);
             }
-            else { 
-                return RedirectToAction("InvalidAccess", "Home");
-            }
-        }
+            else {               return RedirectToAction("InvalidAccess", "Home");         }      }
         [HttpPost]
         public ActionResult UpdateEmployee(UpdateEmployeeViewModel uevm)
         {
-            
-            
-            
-            
+                      
             this.us.UpdateEmployee(uevm.EmployeeID, uevm.EmployeeName, uevm.Mobile);
+
+            
             int CurrentEID = Convert.ToInt32(Session["CurrentUserID"]);
             if(CurrentEID==uevm.EmployeeID)
+            
+            
             {
                 return RedirectToAction("ProfilePage", "Account");
             }
             return RedirectToAction("EmployeeSearch", "Account");
+        }
+        [EmployeeAuthorizationFilter]
+        public ActionResult ProfilePage()
+        {
+            int eid = Convert.ToInt32(Session["CurrentUserID"]);
+            string RoleName = Session["CurrentUserRoleName"].ToString();
+            ViewBag.CurrentRole = RoleName;
+            EmployeeViewModel emp = this.us.GetEmployees().Where(temp => temp.EmployeeID == eid).FirstOrDefault();
+            ViewBag.EMP = emp;
+            return View();
         }
 
     }
