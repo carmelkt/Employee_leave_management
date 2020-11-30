@@ -216,7 +216,31 @@ namespace LeaveSystem.Controllers
         }
  
         public ActionResult UpdateEmployee(int? id)
-        { int tempx = Convert.ToInt32(Session["CurrentUserID"]);
+        {
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            int tempx = Convert.ToInt32(Session["CurrentUserID"]);
             if (Session["CurrentUserRoleName"].ToString() == "HR Manager" || (tempx == id && id != null)) { 
               EmployeeViewModel emp = this.us.GetEmployees().Where(temp => temp.EmployeeID != 0 && temp.EmployeeID == id).FirstOrDefault();
 
