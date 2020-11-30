@@ -1,5 +1,5 @@
 ﻿@model LeaveSystem.DomainModels.Employee
-   
+
 
 @{
     ViewBag.Title = "Register";
@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="RoleID">Role</label>
-                    <select class="form-control" id="RoleID" name="RoleID">
+                    <select class="form-control" id="RoleID" name="RoleID" onchange="checker()">
                         <option value="">Please Select</option>
                         @foreach (var dep in ViewBag.Roles)
                         {
@@ -72,7 +72,7 @@
                 </div>
 
 
-               
+
             </div>
 
 
@@ -101,8 +101,8 @@
                 </div>
                 <div class="form-group">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="Active" name="IsSpecialPermission" value="true">
-                        <label class="form-check-label" for="Active">
+                        <input class="form-check-input chkx" type="checkbox" id="chk" name="IsSpecialPermission" value="true">
+                        <label class="form-check-label chkx" for="chk">
                             Special Permissions
                         </label>
                     </div>
@@ -124,9 +124,7 @@
 </div>
 
 <script>
-
     $("a[href='/account/register']").attr("id", "active");
-
     $(document).on("submit", ".needs-validation", validate);
     $(".needs-validation input").blur(validate);
     function validate(event)
@@ -137,12 +135,18 @@
         }
         $(".needs-validation")[0].classList.add("was-validated");
     }
-
     function escapeRegExp(str) @*mentioned in confirm password*@
     {
         return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     }
-
+    function checker() {
+        if ($("#RoleID").val() == 1) {
+            $(".chkx").show();
+        }
+        else {
+            $(".chkx").hide();
+        }
+    }
     $("#txtEmail").blur(function ()
     {
         $.ajax({
@@ -167,5 +171,3 @@
         });
       });
 </script>
-
-

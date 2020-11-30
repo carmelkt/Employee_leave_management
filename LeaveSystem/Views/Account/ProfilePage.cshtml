@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Profile Page";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Employee Profile - @ViewBag.EMP.EmployeeName</h3>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-bordered w-50">
+
+
+                    <tr>
+                        <td style="font-weight:bold"><img src="~/@ViewBag.EMP.ImageUrl" width="100px" height="100px" style="margin-left:40px" /></td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="font-weight:bold"><span style="float:left">Employee Contact</span>   <span style="padding-left:225px">:</span>    <span style="float:right">@ViewBag.EMP.Mobile</span></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold"><span style="float:left">Employee Mail</span>  <span style="padding-left:250px">: </span>   <span style="float:right">@ViewBag.EMP.Email</span></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold"><span style="float:left">Employee Role</span>  <span style="margin-left:250px">: </span>  <span style="float:right"> @ViewBag.CurrentRole</span></td>
+                    </tr>
+
+
+
+
+                </table>
+                <a href="/account/UpdateEmployee/@ViewBag.EMP.EmployeeID">Update Profile</a>
+            </div>
+            </div>
+        </div>
+    </div>

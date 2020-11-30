@@ -6,6 +6,7 @@ using System.Web;
 using System.Text;
 using System.IO;
 using System.Web.Mvc;
+using System.Web.Helpers;
 using LeaveSystem.ViewModels;
 using LeaveSystem.ServiceLayer;
 using LeaveSystem.DomainModels;
@@ -117,7 +118,7 @@ namespace LeaveSystem.Controllers
 
                    
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("ProfilePage", "Account");
                     }
 
                 }
@@ -133,6 +134,16 @@ namespace LeaveSystem.Controllers
                 return View(lvm);
             }
 
+        }
+        [EmployeeAuthorizationFilter]
+        public ActionResult ProfilePage()
+        {
+            int eid = Convert.ToInt32(Session["CurrentUserID"]);
+            string RoleName = Session["CurrentUserRoleName"].ToString();
+            ViewBag.CurrentRole = RoleName;
+            EmployeeViewModel emp = this.us.GetEmployees().Where(temp => temp.EmployeeID == eid).FirstOrDefault();
+            ViewBag.EMP = emp;
+            return View();
         }
         public ActionResult Logout()
         {
@@ -171,7 +182,26 @@ namespace LeaveSystem.Controllers
         [HttpPost]
         public ActionResult UpdateLeave(LeaveStatusViewModel lsvm)
         {
-           // lsvm.LeaveID = Convert.ToInt32(Request["LeaveID"]); 
+            // lsvm.LeaveID = Convert.ToInt32(Request["LeaveID"]); 
+            int eid = lsvm.EmployeeID;
+            EmployeeViewModel evm = this.us.GetEmployees().Where(temp => temp.EmployeeID == eid).FirstOrDefault();
+            string recepient = evm.Email;
+            int mailstatus = lsvm.LeaveStatus;
+
+            string subject = "Leave Status Update";
+            if (mailstatus == 1)
+            {
+                string body = "Your leave request has been approved, congratulations";
+                WebMail.Send(recepient, subject, body, null, null, null, true, null, null, null, null, null, null);
+            }
+            else if (mailstatus == 2)
+            {
+                string body = "Your leave request has been rejected, sorry for the decision";
+                WebMail.Send(recepient, subject, body, null, null, null, true, null, null, null, null, null, null);
+            }
+
+
+
             this.ls.UpdateLeaveStatus(lsvm.LeaveID, lsvm.LeaveStatus);
             return RedirectToAction("UpdateLeave", "Account");
         }
@@ -194,22 +224,27 @@ namespace LeaveSystem.Controllers
             return View(SearchRoles);
 
         }
-        [HRManagerAuthorizationFilter]
+        //[HRManagerAuthorizationFilter]
         public ActionResult UpdateEmployee(int? id)
-        {
-            //int uid = Convert.ToInt32(Session["CurrentUserID"]);
-            //EmployeeViewModel uvm=this.us.GetEmployeesByEmployeeID(uid);
-            //UpdateEmployeeViewModel uevm = new UpdateEmployeeViewModel() { EmployeeName = uvm.EmployeeName, Email = uvm.Email, Mobile = uvm.Mobile, EmployeeID=uvm.EmployeeID };
-            EmployeeViewModel emp = this.us.GetEmployees().Where(temp => temp.EmployeeID != 0 && temp.EmployeeID==id).FirstOrDefault();
-           
-            ViewBag.Departments = ds.GetDepartments();
-            ViewBag.Roles = rs.GetRoles();
-            if (id != 0)
-            {
-                ViewBag.empid = id;
+        { int tempx = Convert.ToInt32(Session["CurrentUserID"]);
+            if (Session["CurrentUserRoleName"].ToString() == "HR Manager" || (tempx == id && id != null))
+            { //int uid = Convert.ToInt32(Session["CurrentUserID"]);
+              //EmployeeViewModel uvm=this.us.GetEmployeesByEmployeeID(uid);
+              //UpdateEmployeeViewModel uevm = new UpdateEmployeeViewModel() { EmployeeName = uvm.EmployeeName, Email = uvm.Email, Mobile = uvm.Mobile, EmployeeID=uvm.EmployeeID };
+                EmployeeViewModel emp = this.us.GetEmployees().Where(temp => temp.EmployeeID != 0 && temp.EmployeeID == id).FirstOrDefault();
+
+                ViewBag.Departments = ds.GetDepartments();
+                ViewBag.Roles = rs.GetRoles();
+                if (id != 0)
+                {
+                    ViewBag.empid = id;
+                }
+                ViewBag.emp = emp;
+                return View(emp);
             }
-            ViewBag.emp = emp;
-            return View(emp);
+            else { 
+                return RedirectToAction("InvalidAccess", "Home");
+            }
         }
         [HttpPost]
         public ActionResult UpdateEmployee(UpdateEmployeeViewModel uevm)
@@ -219,6 +254,11 @@ namespace LeaveSystem.Controllers
             
             
             this.us.UpdateEmployee(uevm.EmployeeID, uevm.EmployeeName, uevm.Mobile);
+            int CurrentEID = Convert.ToInt32(Session["CurrentUserID"]);
+            if(CurrentEID==uevm.EmployeeID)
+            {
+                return RedirectToAction("ProfilePage", "Account");
+            }
             return RedirectToAction("EmployeeSearch", "Account");
         }
 

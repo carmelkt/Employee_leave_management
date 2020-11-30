@@ -15,113 +15,113 @@
                 <h4>Accept/Reject Leave Requests</h4>
 
                 @* <ul class="list-group list-group-flush">
+                        @foreach (var item in ViewBag.AllLeaves)
+                        {
+                        <li class="list-group-item list-group-item-action" style="font-weight:bold">
+                            =>LeaveID: @item.LeaveID| Employee ID: @item.EmployeeID| Employee Name: @item.Employee.EmployeeName| Leave Start Date: @item.LeaveStartDate| Leave End Date: @item.LeaveEndDate| Leave Status:  @if (item.LeaveStatus == 0)
+                            {<span>Pending</span>}
+                            else if (item.LeaveStatus == 1)
+                            {<span>Approved</span>}
+                            else
+                            { <span>Rejected</span>}| Cause(s): @item.RequestText
+                        </li>
+                        }
+                    </ul>*@
 
+                <table class="table table-bordered table-responsive table-hover">
+
+                    <tr>
+                        <td style="font-weight:bold">Leave ID</td>
+                        <td style="font-weight:bold">Employee ID</td>
+                        <td style="font-weight:bold">Employee Name</td>
+                        <td style="font-weight:bold">Leave Start Date</td>
+                        <td style="font-weight:bold">Leave End Date</td>
+                        <td style="font-weight:bold">Leave Status</td>
+                        <td style="font-weight:bold">Cause(s)</td>
+                        <td style="font-weight:bold">Approve/Reject</td>
+                    </tr>
                     @foreach (var item in ViewBag.AllLeaves)
                     {
 
+                        <tr>
+                            <td>@item.LeaveID</td>
+                            <td> @item.EmployeeID</td>
+                            <td>@item.Employee.EmployeeName</td>
+                            <td> @item.LeaveStartDate</td>
+                            <td>@item.LeaveEndDate</td>
+                            @if (item.LeaveStatus == 0)
+                            {
+                                <td style="color:darkblue">Pending</td>
+                            }
+                            else if (item.LeaveStatus == 1)
+                            {
+                                <td style="color:darkgreen">Approved</td>
+                            }
+                            else
+                            {
+                                <td style="color:red">Rejected</td>
+                            }
+                            <td>@item.RequestText</td>
 
-                    <li class="list-group-item list-group-item-action" style="font-weight:bold">
-                        =>LeaveID: @item.LeaveID| Employee ID: @item.EmployeeID| Employee Name: @item.Employee.EmployeeName| Leave Start Date: @item.LeaveStartDate| Leave End Date: @item.LeaveEndDate| Leave Status:  @if (item.LeaveStatus == 0)
-                        {<span>Pending</span>}
-                        else if (item.LeaveStatus == 1)
-                        {<span>Approved</span>}
-                        else
-                        { <span>Rejected</span>}| Cause(s): @item.RequestText
-                    </li>
+
+
+
+
+                            <td>
+                                <form novalidate="novalidate" action="/account/UpdateLeave" method="post" class="needs-validation">
+
+
+                                    <div class="form-row hidden">
+                                        <div class="form-group col-sm-6 hidden">
+                                            <input type="text" class="form-control hidden" id="txtName" placeholder="Enter Leave ID" name="LeaveID" value="@item.LeaveID" />
+                                        </div>
+                                    </div>
+                                    <div class="form-row hidden">
+                                        <div class="form-group col-sm-6 hidden">
+                                            <input type="text" class="form-control hidden" id="txtName" placeholder="Enter Employee ID" name="EmployeeID" value="@item.EmployeeID" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-6">
+                                            <label for="txtName"></label>
+                                            <div class="d-xl-inline-flex">
+                                                <button type="submit" class="btn btn-success btn-sm float-left" style="" name="LeaveStatus" value="1">Approve</button>
+                                                <button type="submit" class="btn btn-danger btn-sm float-right" style="" name="LeaveStatus" value="2">Reject</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                    @* <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                      @Html.LabelFor(temp => temp.Department.DepartmentID)
+                                                    @Html.DropDownListFor(temp => temp.Department.DepartmentID, new SelectList(ViewBag.Department,"DepartmentID","DepartmentName"), "Please Select", new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(temp => temp.Department.DepartmentID)
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    @Html.LabelFor(temp => temp.BrandID)
+                                        @Html.DropDownListFor(temp => temp.BrandID, new SelectList(ViewBag.Brands, "BrandID", "BrandName"), "Please Select", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(temp => temp.BrandID)
+                                                </div>
+                                            </div>*@
+
+
+
+
+
+
+                                </form>
+                            </td>
+                        </tr>
 
                     }
-
-                </ul>*@
-
-            <table class="table table-bordered table-responsive table-hover">
-
-                <tr>
-                    <td style="font-weight:bold">Leave ID</td>
-                    <td style="font-weight:bold">Employee ID</td>
-                    <td style="font-weight:bold">Employee Name</td>
-                    <td style="font-weight:bold">Leave Start Date</td>
-                    <td style="font-weight:bold">Leave End Date</td>
-                    <td style="font-weight:bold">Leave Status</td>
-                    <td style="font-weight:bold">Cause(s)</td>
-                    <td style="font-weight:bold">Approve/Reject</td>
-                </tr>
-                @foreach (var item in ViewBag.AllLeaves)
-                {
-
-                    <tr>
-                        <td>@item.LeaveID</td>
-                        <td> @item.EmployeeID</td>
-                        <td>@item.Employee.EmployeeName</td>
-                        <td> @item.LeaveStartDate</td>
-                        <td>@item.LeaveEndDate</td>
-                        @if (item.LeaveStatus == 0)
-                        {
-                            <td style="color:darkblue">Pending</td>
-                        }
-                        else if (item.LeaveStatus == 1)
-                        {
-                            <td style="color:darkgreen">Approved</td>
-                        }
-                        else
-                        {
-                            <td style="color:red">Rejected</td>
-                        }
-                        <td>@item.RequestText</td>
-                        
-
-
-
-
-                       <td> <form novalidate="novalidate" action="/account/UpdateLeave" method="post" class="needs-validation">
-
-
-    <div class="form-row hidden">
-        <div class="form-group col-sm-6 hidden">
-            <input type="text" class="form-control hidden" id="txtName" placeholder="Enter Leave ID" name="LeaveID" value="@item.LeaveID" />
-        </div>
-    </div>
-
-    <div class="form-row">
-        <div class="form-group col-sm-6">
-            <label for="txtName"></label>
-            <div class="d-xl-inline-flex">
-                <button type="submit" class="btn btn-success btn-sm float-left" style="" name="LeaveStatus" value="1">Approve</button>
-                <button type="submit" class="btn btn-danger btn-sm float-right" style="" name="LeaveStatus" value="2">Reject</button>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-    @* <div class="form-row">
-
-
-
-                <div class="form-group col-md-6">
-                      @Html.LabelFor(temp => temp.Department.DepartmentID)
-                    @Html.DropDownListFor(temp => temp.Department.DepartmentID, new SelectList(ViewBag.Department,"DepartmentID","DepartmentName"), "Please Select", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(temp => temp.Department.DepartmentID)
-                </div>
-                <div class="form-group col-md-6">
-                    @Html.LabelFor(temp => temp.BrandID)
-        @Html.DropDownListFor(temp => temp.BrandID, new SelectList(ViewBag.Brands, "BrandID", "BrandName"), "Please Select", new { @class = "form-control" })
-        @Html.ValidationMessageFor(temp => temp.BrandID)
-                </div>
-            </div>*@
-
-
-
-
-
-
-</form></td>
-                    </tr>
-
-                }
-            </table>
+                </table>
 
             </div>
         </div>
@@ -129,6 +129,5 @@
 </div>
 
 <script>
-
     $("a[href='/account/UpdateLeave']").attr("id", "active");
 </script>
