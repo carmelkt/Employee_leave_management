@@ -124,7 +124,9 @@
 </div>
 
 <script>
+
     $("a[href='/account/register']").attr("id", "active");
+
     $(document).on("submit", ".needs-validation", validate);
     $(".needs-validation input").blur(validate);
     function validate(event)
@@ -135,11 +137,11 @@
         }
         $(".needs-validation")[0].classList.add("was-validated");
     }
+
     function escapeRegExp(str) 
     {
         return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     }
-
     function checker() {
         if ($("#RoleID").val() == 1) {
             $(".chkx").show();
@@ -148,6 +150,7 @@
             $(".chkx").hide();
         }
     }
+
     $("#txtEmail").blur(function ()
     {
         $.ajax({

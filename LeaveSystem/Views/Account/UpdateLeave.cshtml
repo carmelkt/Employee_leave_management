@@ -15,8 +15,11 @@
                 <h4>Accept/Reject Leave Requests</h4>
 
                 @* <ul class="list-group list-group-flush">
+
                         @foreach (var item in ViewBag.AllLeaves)
                         {
+
+
                         <li class="list-group-item list-group-item-action" style="font-weight:bold">
                             =>LeaveID: @item.LeaveID| Employee ID: @item.EmployeeID| Employee Name: @item.Employee.EmployeeName| Leave Start Date: @item.LeaveStartDate| Leave End Date: @item.LeaveEndDate| Leave Status:  @if (item.LeaveStatus == 0)
                             {<span>Pending</span>}
@@ -25,7 +28,9 @@
                             else
                             { <span>Rejected</span>}| Cause(s): @item.RequestText
                         </li>
-                        }
+                        
+                    }
+
                     </ul>*@
 
                 <table class="table table-bordered table-responsive table-hover">
@@ -67,8 +72,7 @@
 
 
 
-                            <td>
-                                <form novalidate="novalidate" action="/account/UpdateLeave" method="post" class="needs-validation">
+                            <td><form novalidate="novalidate" action="/account/UpdateLeave" method="post" class="needs-validation">
 
 
                                     <div class="form-row hidden">
@@ -99,6 +103,9 @@
 
 
                                     @* <div class="form-row">
+
+
+
                                                 <div class="form-group col-md-6">
                                                       @Html.LabelFor(temp => temp.Department.DepartmentID)
                                                     @Html.DropDownListFor(temp => temp.Department.DepartmentID, new SelectList(ViewBag.Department,"DepartmentID","DepartmentName"), "Please Select", new { @class = "form-control" })
@@ -116,8 +123,7 @@
 
 
 
-                                </form>
-                            </td>
+                                </form></td>                           
                         </tr>
 
                     }
@@ -129,5 +135,6 @@
 </div>
 
 <script>
+
     $("a[href='/account/UpdateLeave']").attr("id", "active");
 </script>
