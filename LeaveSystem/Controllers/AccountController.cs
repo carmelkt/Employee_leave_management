@@ -31,13 +31,7 @@ namespace LeaveSystem.Controllers
         [HRManagerAuthorizationFilter]
         public ActionResult Register()
         {
-            /*if(ImageUrl!=null)
-            {
-                string ImageName = System.IO.Path.GetFileName(ImageUrl.FileName);
-                string PhysicalPath = Server.MapPath("~/App_Data/Image/" + ImageName);
-                ImageUrl.SaveAs(PhysicalPath);
-            }*/
-
+           
             ViewBag.Departments = ds.GetDepartments();
             ViewBag.Roles = rs.GetRoles();
             return View();
@@ -49,17 +43,7 @@ namespace LeaveSystem.Controllers
         {
 
             LeaveSystemDatabaseDbContext db = new LeaveSystemDatabaseDbContext();
-            /*if (Image != null)
-            {
-                string ImageName = System.IO.Path.GetFileName(Image.FileName);
-                string PhysicalPath = Server.MapPath("~/Images/" + ImageName);
-                Image.SaveAs(PhysicalPath);
-                rvm.ImageUrl = PhysicalPath;
-            }*/
-            //string ImageName = rvm.ImageUrl;
-            //string PhysicalPath = Server.MapPath("~/App_Data/Image" + ImageName);
-            //rvm.ImageUrl = PhysicalPath;
-
+           
             HttpPostedFileBase hpf = Request.Files["Images"] as HttpPostedFileBase;
             if (hpf != null)
             {
@@ -75,16 +59,14 @@ namespace LeaveSystem.Controllers
                     rvm.ImageUrl = locx;
                 }
             }
-            //if (Request.Files.Count >= 1)
+            
 
 
 
 
-            //rvm.EmployeeName = rvm.EmployeeName;
+           
             this.us.CreateEmployee(rvm);
-            //db.Employees.Add(p);
-            //db.SaveChanges();
-
+            
 
             return RedirectToAction("Index", "Home");
 
