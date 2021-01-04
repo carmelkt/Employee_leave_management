@@ -19,7 +19,5 @@ namespace LeaveSystem.ViewModels
         public int EmployeeID { get; set; }
         [Required]
         public int DepartmentID { get; set; }
-        
-         //check later
     }
 }
