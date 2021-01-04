@@ -1,5 +1,4 @@
 ﻿using System;
-
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -28,6 +27,7 @@ namespace LeaveSystem.Controllers
             this.rs = rs;
             this.ls = ls;
         }
+        
         [HRManagerAuthorizationFilter]
         public ActionResult Register()
         {
@@ -51,26 +51,11 @@ namespace LeaveSystem.Controllers
                 string location = (Server.MapPath("~/EmployeePhoto" + @"\" + saveFileName.Replace('+', '_')));
                 Request.Files["Images"].SaveAs(location);
 
-
-
                 string locx = "EmployeePhoto/" + saveFileName;
-
-                {
-                    rvm.ImageUrl = locx;
-                }
+                rvm.ImageUrl = locx;
             }
-            
-
-
-
-
-           
             this.us.CreateEmployee(rvm);
-            
-
             return RedirectToAction("Index", "Home");
-
-
         }
 
         public ActionResult Login()
@@ -96,13 +81,8 @@ namespace LeaveSystem.Controllers
                     Session["CurrentUserRoleName"] = uvm.role.RoleName;
                     Session["CurrentEmployee"] = null;
                     Session["CurrentUserPhoto"] = uvm.ImageUrl;
-
-
-
-                    {
-
-                        return RedirectToAction("ProfilePage", "Account");
-                    }
+                    
+                    return RedirectToAction("ProfilePage", "Account");           
                 }
                 else
                 {
@@ -115,18 +95,18 @@ namespace LeaveSystem.Controllers
                 ModelState.AddModelError("x", "Invalid Data");
                 return View(lvm);
             }
-
         }
+           
         public ActionResult Logout()
         {
             Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
+        
         [EmployeeAuthorizationFilter]
         public ActionResult LeaveRequest()
         {
             List<LeaveViewModel> qt = ls.GetLeaves().Where(temp => temp.EmployeeID == Convert.ToInt32(Session["CurrentUserID"])).ToList();
-
             ViewBag.Leaves = qt;
             LeaveViewModel lvm = new LeaveViewModel();
             return View(qt);
@@ -136,25 +116,21 @@ namespace LeaveSystem.Controllers
         public ActionResult LeaveRequest(LeaveViewModel lvm)
         {
             lvm.EmployeeID = Convert.ToInt32(Session["CurrentUserID"]);
-            //EmployeeViewModel evm = this.us.GetEmployeesByEmployeeID(lvm.EmployeeID);
             this.ls.LeaveRequest(lvm);
-
-
             return RedirectToAction("LeaveRequest", "Account");
         }
 
         [SpecialHRAuthorizationFilter]
         public ActionResult UpdateLeave()
         {
-
             List<LeaveViewModel> AllLeaves = ls.GetLeaves();
             ViewBag.AllLeaves = AllLeaves;
             return View(AllLeaves);
         }
+        
         [HttpPost]       
         public ActionResult UpdateLeave(LeaveStatusViewModel lsvm)
         {
-            // lsvm.LeaveID = Convert.ToInt32(Request["LeaveID"]); 
             int eid = lsvm.EmployeeID;
             EmployeeViewModel evm = this.us.GetEmployees().Where(temp => temp.EmployeeID == eid).FirstOrDefault();
             string recepient = evm.Email;
@@ -171,22 +147,19 @@ namespace LeaveSystem.Controllers
                 string body = "Your leave request has been rejected, sorry for the decision";
                 WebMail.Send(recepient, subject, body, null, null, null, true, null, null, null, null, null, null);
             }
-
-              
-
             this.ls.UpdateLeaveStatus(lsvm.LeaveID, lsvm.LeaveStatus);
             return RedirectToAction("UpdateLeave", "Account");
         }
+        
         [EmployeeAuthorizationFilter]
         public ActionResult EmployeeSearch(string search = "")
         {
             ViewBag.search = search;
-
             List<EmployeeViewModel> Employe = this.us.GetEmployees().Where(temp => temp.EmployeeName != null && temp.EmployeeName.ToLower().Contains(search.ToLower())).ToList();
             ViewBag.Employe = Employe;
-
             return View(Employe);
         }
+        
         [EmployeeAuthorizationFilter]
         public ActionResult EmployeeSearchByRoles(int RoleID = 0)
         {
@@ -194,39 +167,14 @@ namespace LeaveSystem.Controllers
             ViewBag.Roles = rs.GetRoles();
             ViewBag.SearchRoles = SearchRoles;
             return View(SearchRoles);
-
         }
 
         public ActionResult UpdateEmployee(int? id)
         {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             int tempx = Convert.ToInt32(Session["CurrentUserID"]);
             if (Session["CurrentUserRoleName"].ToString() == "HR Manager" || (tempx == id && id != null))
             {
                 EmployeeViewModel emp = this.us.GetEmployees().Where(temp => temp.EmployeeID != 0 && temp.EmployeeID == id).FirstOrDefault();
-
                 ViewBag.Departments = ds.GetDepartments();
                 ViewBag.Roles = rs.GetRoles();
                 if (id != 0)
@@ -238,22 +186,19 @@ namespace LeaveSystem.Controllers
             }
             else { return RedirectToAction("InvalidAccess", "Home"); }
         }
+        
         [HttpPost]
         public ActionResult UpdateEmployee(UpdateEmployeeViewModel uevm)
         {
-                      
             this.us.UpdateEmployee(uevm.EmployeeID, uevm.EmployeeName, uevm.Mobile);
-
-
             int CurrentEID = Convert.ToInt32(Session["CurrentUserID"]);
             if (CurrentEID == uevm.EmployeeID)
-
-
             {
                 return RedirectToAction("ProfilePage", "Account");
             }
             return RedirectToAction("EmployeeSearch", "Account");
         }
+        
         [EmployeeAuthorizationFilter]
         public ActionResult ProfilePage()
         {
@@ -264,6 +209,5 @@ namespace LeaveSystem.Controllers
             ViewBag.EMP = emp;
             return View();
         }
-
     }
 }
