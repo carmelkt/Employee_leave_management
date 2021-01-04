@@ -15,7 +15,6 @@ namespace LeaveSystem.Repositories
         void UpdateLeaveStatus(int qid, int status);
         List<Leave> GetLeaves();
         List<Leave> GetLeaveByLeaveID(int LeaveID);
-
     }
     public class LeavesRepository : ILeavesRepository
     {
@@ -33,11 +32,9 @@ namespace LeaveSystem.Repositories
         {
             Leave qt = db.Leaves.Where(temp => temp.LeaveID == q.LeaveID).FirstOrDefault();
             if (qt != null)
-            {
-                
+            {               
                 qt.LeaveStartDate = q.LeaveStartDate;
-                qt.LeaveEndDate = q.LeaveEndDate;
-                
+                qt.LeaveEndDate = q.LeaveEndDate;              
                 db.SaveChanges();
             }
         }
@@ -69,6 +66,5 @@ namespace LeaveSystem.Repositories
             List<Leave> qt = db.Leaves.Where(temp => temp.LeaveID==LeaveID).ToList();
             return qt;
         }
-
     }
 }
