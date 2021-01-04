@@ -21,35 +21,40 @@ namespace LeaveSystem.Controllers
             this.cs = cs;
             this.rs = rs;
         }
+        
         public ActionResult Index()
         {
-            //List<LeaveViewModel> Leaves = this.qs.GetLeaves().ToList();
             return View();
         }
+        
         public ActionResult About()
         {
             return View();
         }
+        
         public ActionResult Contact()
         {
             return View();
         }
+        
         [EmployeeAuthorizationFilter]
         public ActionResult Departments()
         {
            List<DepartmentViewModel> departments= this.cs.GetDepartments();
-            return View(departments);
+           return View(departments);
         }
+        
         [EmployeeAuthorizationFilter]
         public ActionResult Roles()
         {
-            List<RoleViewModel> roles = this.rs.GetRoles();
-            return View(roles);
+           List<RoleViewModel> roles = this.rs.GetRoles();
+           return View(roles);
         }
+        
         public ActionResult InvalidAccess()
         {
-            ViewBag.message = "Invalid Access Request";
-            return View();
+           ViewBag.message = "Invalid Access Request";
+           return View();
         }
     }
 }
