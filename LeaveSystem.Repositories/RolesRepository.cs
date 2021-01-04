@@ -37,7 +37,5 @@ namespace LeaveSystem.Repositories
             List<Role> ct = db.Roles.Where(temp => temp.RoleID == RoleID).ToList();
             return ct;
         }
-
-
     }
 }
