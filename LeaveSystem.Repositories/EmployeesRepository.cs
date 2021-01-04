@@ -59,14 +59,11 @@ namespace LeaveSystem.Repositories
         {
             List<Employee> us = db.Employees.Where(temp => temp.EmployeeID==EmployeeID).ToList();
             return us;
-
         }
         public int GetLatestEmployeeID()
         {
             int uid = db.Employees.Select(temp => temp.EmployeeID).Max();
             return uid;
-
         }
-
     }
 }
