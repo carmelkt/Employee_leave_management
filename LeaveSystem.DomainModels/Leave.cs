@@ -16,14 +16,9 @@ namespace LeaveSystem.DomainModels
         public DateTime LeaveStartDate { get; set; }
         public DateTime LeaveEndDate { get; set; }
         public int LeaveStatus { get; set; }
-
-        public int EmployeeID { get; set; }
-       
+        public int EmployeeID { get; set; }       
         public string RequestText { get; set; }
-
         [ForeignKey("EmployeeID")]
-        public virtual Employee Employee { get; set; }
-
-        
+        public virtual Employee Employee { get; set; }        
     }
 }
