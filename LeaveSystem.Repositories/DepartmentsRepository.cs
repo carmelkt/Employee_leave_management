@@ -37,7 +37,5 @@ namespace LeaveSystem.Repositories
             List<Department> ct = db.Departments.Where(temp => temp.DepartmentID == DepartmentID).ToList();
             return ct;
         }
-
-
     }
 }
