@@ -9,7 +9,6 @@ using LeaveSystem.Repositories;
 using AutoMapper;
 using AutoMapper.Configuration;
 
-
 namespace LeaveSystem.ServiceLayer
 {
     public interface IRolesService
@@ -55,8 +54,6 @@ namespace LeaveSystem.ServiceLayer
             }
             return cvm;
         }
-
-
     }
 }
 
