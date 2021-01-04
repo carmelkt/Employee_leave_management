@@ -1,6 +1,5 @@
 ﻿@model LeaveSystem.DomainModels.Employee
 
-
 @{
     ViewBag.Title = "Register";
 }
@@ -48,7 +47,6 @@
                 </div>
             </div>
 
-
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="DepartmentID">Department</label>
@@ -70,13 +68,8 @@
                         }
                     </select>
                 </div>
-
-
-
             </div>
-
-
-
+            
             <div class="form-row">
                 <div class="form-group col-sm-6">
                     <label for="txtPassword">Password</label>
@@ -139,6 +132,7 @@
     function escapeRegExp(str) {
         return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     }
+    
     function checker() {
         if ($("#RoleID").val() == 1) {
             $(".chkx").show();
