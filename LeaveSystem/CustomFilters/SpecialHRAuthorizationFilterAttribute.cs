@@ -12,7 +12,6 @@ namespace LeaveSystem.CustomFilters
         {
             if ((filterContext.RequestContext.HttpContext.Session["CurrentUserRoleName"].ToString()!="HR Manager"||filterContext.RequestContext.HttpContext.Session["CurrentUserIsAdmin"].Equals(false))&& filterContext.RequestContext.HttpContext.Session["CurrentUserRoleName"].ToString() != "Project Manager")
             {
-
                 filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "Home", action = "InvalidAccess" }));
             }
         }
