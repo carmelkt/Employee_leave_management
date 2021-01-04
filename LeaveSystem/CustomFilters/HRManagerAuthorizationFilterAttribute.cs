@@ -11,8 +11,7 @@ namespace LeaveSystem.CustomFilters
         public void OnAuthorization(AuthorizationContext filterContext)
         {
             if (filterContext.RequestContext.HttpContext.Session["CurrentUserRoleName"].ToString() != "HR Manager")
-            {
-                
+            {           
                 filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "Home", action = "InvalidAccess" }));
             }
         }
