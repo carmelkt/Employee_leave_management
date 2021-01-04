@@ -1,6 +1,5 @@
 ﻿@model List<LeaveSystem.ViewModels.LeaveViewModel>
 
-
 @{
     ViewBag.Title = "Leave";
 }
@@ -8,27 +7,19 @@
 <div class="row">
     <div class="col-sm-12">
         <h1>Leave Request</h1>
-
         <div class="row">
             <div class="col-sm-12">
-                <h4>Requested Leaves</h4>
-                
+                <h4>Requested Leaves</h4>             
                 <table class="table table-bordered table-responsive table-hover">
-
-                    <tr>
-                       
+                    <tr>                     
                         <td style="font-weight:bold">Leave Start Date</td>
                         <td style="font-weight:bold">Leave End Date</td>
                         <td style="font-weight:bold">Leave Status</td>
-                        <td style="font-weight:bold">Request Text</td>
-                       
+                        <td style="font-weight:bold">Request Text</td>                    
                     </tr>
                     @foreach (var item in ViewBag.Leaves)
                     {
-
-
-                        <tr>
-                           
+                        <tr>                          
                             <td> @item.LeaveStartDate</td>
                             <td>@item.LeaveEndDate</td>
                             @if (item.LeaveStatus == 0)
@@ -45,24 +36,18 @@
                             }
                             <td>@item.RequestText</td>
                         </tr>
-
                     }
-
                 </table>
-</div>
+           </div>
         </div>
 
         <form novalidate="novalidate" action="/account/LeaveRequest" method="post" class="needs-validation">
             <h4>Request Leave</h4>
             <div class="form-row">
-                
-            </div>
-            <div class="form-row">
                 <div class="form-group col-sm-6">
                     <label for="txtName">Leave Start Date</label>
                     <input type="date" class="form-control" id="txtName" placeholder="Enter Leave Start Date" name="LeaveStartDate" />
                 </div>
-
                 <div class="form-group col-sm-6">
                     <label for="txtName">Leave End Date</label>
                     <input type="date" class="form-control" id="txtName" placeholder="Enter Leave End Date" name="LeaveEndDate" />
@@ -73,45 +58,12 @@
                     <label for="txtName">Cause(s)</label>
                     <input type="text" class="form-control" id="txtName" placeholder="Type your request here" name="RequestText" />
                 </div>
-            </div>
-
-
-
-
-            <div class="form-row">
-
-
-
-               
-            </div>
-
-
-
-            <div class="form-row">
-
-
-                <div class="form-group col-sm-6">
-
-                </div>
-                <div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <table class="table">
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            </div>               
             <button type="submit" class="btn btn-primary">Request-Leave</button>
         </form>
     </div>
 </div>
-
 <script>
-
-    $("a[href='/account/LeaveRequest']").attr("id", "active");
-
-   
+    $("a[href='/account/LeaveRequest']").attr("id", "active");  
 </script>
 
