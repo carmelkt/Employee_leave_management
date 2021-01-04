@@ -9,11 +9,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LeaveSystem.ViewModels
 {
     public class ChangeLeaveStatusViewModel //BY SUPERIORS
-    {   [Required]
+    {   
+        [Required]
         public int LeaveID { get; set; }
         [Required]
         public int EmployeeID { get; set; }
         public virtual EmployeeViewModel Employee { get; set; }
-
     }
 }
