@@ -12,7 +12,7 @@ namespace LeaveSystem
     {
         public static void RegisterComponents()
         {
-			var container = new UnityContainer();
+            var container = new UnityContainer();
             container.RegisterType<ILeavesService, LeavesService>();
             container.RegisterType<IEmployeesService, EmployeesService>();
             container.RegisterType<IDepartmentsService, DepartmentsService>();
