@@ -7,7 +7,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web;
 
-
 namespace LeaveSystem.ViewModels
 {
    public class RegisterViewModel
