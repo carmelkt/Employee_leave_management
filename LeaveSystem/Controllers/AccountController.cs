@@ -30,8 +30,7 @@ namespace LeaveSystem.Controllers
         
         [HRManagerAuthorizationFilter]
         public ActionResult Register()
-        {
-           
+        {         
             ViewBag.Departments = ds.GetDepartments();
             ViewBag.Roles = rs.GetRoles();
             return View();
@@ -40,10 +39,7 @@ namespace LeaveSystem.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Register(RegisterViewModel rvm)
-        {
-
-            LeaveSystemDatabaseDbContext db = new LeaveSystemDatabaseDbContext();
-           
+        {        
             HttpPostedFileBase hpf = Request.Files["Images"] as HttpPostedFileBase;
             if (hpf != null)
             {
