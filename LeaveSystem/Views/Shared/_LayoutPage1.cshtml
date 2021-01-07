@@ -1,7 +1,5 @@
 ﻿@using System.Web.Optimization
-@using LeaveSystem.CustomFilters
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -9,17 +7,12 @@
     <title>@ViewBag.Title - YourCompany</title>
     @Styles.Render("~/Styles/bootstrap")
     @Styles.Render("~/Styles/site")
-    @Scripts.Render("~/Scripts/bootstrap")
-
-   
+    @Scripts.Render("~/Scripts/bootstrap")   
 </head>
 <body>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-sm text-light navbar-light" >
             <a class="navbar-brand" href="#">Leave System</a>
-
-
-
             <button class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavBar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,7 +24,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/home/about">About</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="/home/contact">Contact</a>
                     </li>
@@ -47,15 +39,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/home/roles">Roles</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="/account/LeaveRequest">Request-Leave</a>
-
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/account/ProfilePage">Profile</a>
                         </li>
                     }
+                    
                     @if (Session["CurrentUserRoleName"] != null && Session["CurrentUserRoleName"].ToString() == "HR Manager")
                     {
                         <li class="nav-item">
@@ -83,12 +74,10 @@
                     {
                         <li class="nav-item ">
                             <a class="nav-link " href="/account/logout">Logout-@Session["CurrentUserName"].ToString().ToUpper()-@Session["CurrentUserID"]-@Session["CurrentUserRoleName"]-<img src="~/@Session["CurrentUserPhoto"].ToString()" width="30px" height="30px" /></a>
-
                         </li>
                     }
                 </ul>
-            </div>
-            
+            </div>            
         </nav>      
             @RenderBody()
     </div>
